@@ -1,0 +1,8 @@
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+C = list(map(int, input().split()))
+arr_x = sorted([A[0], B[0], C[0]])
+arr_y = sorted([A[1], B[1], C[1]])
+non_x = (2 * arr_x[0]) + (2 * arr_x[-1]) - sum(arr_x)
+non_y = (2 * arr_y[0]) + (2 * arr_y[-1]) - sum(arr_y)
+print(non_x, non_y)
