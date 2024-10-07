@@ -7,20 +7,20 @@ int main() {
   cout.tie(NULL);
   cin.tie(NULL);
   
-  long n;
+  int n;
   cin >> n;
   
-  long p1 = 1, p2 = 1, cnt = 0;
-  while (p2 < n) {
-    long sum = 0;
-    for (long i = p1; i <= p2; i++) sum += i;
+  int p1 = 1, p2 = 1, cnt = 0, sum;
+  while (p2 <= n) {
+    sum = 0;
+    for (int i = p1; i <= p2; i++) sum += i;
     
-    if (sum < n) p2++;
-    else if (sum > n) p1++;
+    if (sum > n) p1++;
+    else if (sum < n) p2++;
     else {p1++; cnt++;}
   }
   
-  cout << (cnt + 1) << "\n";
+  cout << cnt << "\n";
   
   return 0;
 }
