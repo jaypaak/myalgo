@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <sstream>
 #include <algorithm>
 
 using namespace std;
@@ -10,29 +9,29 @@ int main() {
   cout.tie(NULL);
   cin.tie(NULL);
   
-  string n_s, m_s;
-  getline(cin, n_s);
-  getline(cin, m_s);
-  long m = stol(m_s);
+  int n, m;
+  cin >> n; // 주어진 재료의 수
+  cin >> m; // 캅옷을 만드는데 필요한 고유번호의 합
   
-  vector<long> v;
-  string s, temp;
-  getline(cin, s);
-  istringstream iss(s);
+  vector<int> v;
+  for (int i = 0; i < n; i++) {
+    int uniqueNumber; // 각 재료의 고유번호
+    cin >> uniqueNumber;
+    v.push_back(uniqueNumber); // 순서대로 저장
+  }
   
-  while (getline(iss, temp, ' ')) v.push_back(stoi(temp));
-  sort(v.begin(), v.end());
+  sort(v.begin(), v.end()); // 오름차순으로 정렬
   
-  long p1 = 0, p2 = v.size() - 1, cnt = 0, sum;
-  while (p1 < p2) {
+  // 투포인터 알고리즘
+  int p1 = 0, p2 = (int) v.size() - 1, cnt = 0, sum;
+  while (p1 != p2) {
     sum = v[p1] + v[p2];
-    
-    if (sum < m) p1++;
-    else if (sum > m) p2--;
-    else {cnt++; p2--;}
+    if (sum > m) p2--;
+    else if (sum < m) p1++;
+    else {cnt++;p2--;}
   }
   
   cout << cnt << "\n";
-    
+  
   return 0;
 }
