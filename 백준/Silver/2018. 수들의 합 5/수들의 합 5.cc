@@ -1,6 +1,4 @@
 #include <iostream>
-#include <vector>
-#include <sstream>
 
 using namespace std;
 
@@ -19,11 +17,7 @@ int main() {
     
     if (sum > n) p1++;
     else if (sum < n) p2++;
-    else {
-      p1++;
-      p2++;
-      cnt++;
-    }
+    else {p1++;p2++;cnt++;}
   }
   
   cout << cnt << "\n";
